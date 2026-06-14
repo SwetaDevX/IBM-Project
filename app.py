@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template_string
 import pickle
 
-app = Flask(__name__)
+app = Flask(name)
 
 # Load ML Model
 try:
@@ -184,9 +184,11 @@ def home():
 
         else:
 
-            if "verify" in email.lower() \
-            or "bank" in email.lower() \
-            or "click here" in email.lower():
+            if (
+                "verify" in email.lower()
+                or "bank" in email.lower()
+                or "click here" in email.lower()
+            ):
 
                 result = "⚠️ Possible Phishing Email"
                 confidence = 85
@@ -206,5 +208,6 @@ def home():
         box_class=box_class
     )
 
-if __name__ == "__main__":
+if name == "main":
+    app.run(debug=True)
     app.run(debug=True)
