@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template_string
 import pickle
 
-app = Flask(name)
+app = Flask(__name__)
 
 # Load ML Model
 try:
@@ -208,6 +208,5 @@ def home():
         box_class=box_class
     )
 
-if name == "main":
-    app.run(debug=True)
+if __name__ == "__main__":
     app.run(debug=True)
